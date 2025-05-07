@@ -1,0 +1,14 @@
+langchain
+chromadb 
+sentence-transformers
+pypdf
+flask
+transformers
+torch
+langchain-google-genai
+google-generativeai
+langchain_huggingface
+langchain-chroma
+
+langchain-community
+python-dotenv
