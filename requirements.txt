@@ -9,6 +9,6 @@ langchain-google-genai
 google-generativeai
 langchain_huggingface
 langchain-chroma
-
+streamlit
 langchain-community
 python-dotenv
