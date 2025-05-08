@@ -37,10 +37,12 @@ db = Chroma(persist_directory="chroma_db", embedding_function=embedding_model )
 llm=ChatGoogleGenerativeAI(temperature=0.3, model="gemini-2.0-flash", key=key)
 
 
-qa_chain = RetrievalQA.from_chain_type(llm, retriever=db.as_retriever() , chain_type="stuff", chain_type_kwargs={"prompt": PROMPT}) 
+qa_chain = RetrievalQA.from_chain_type(llm, retriever=db.as_retriever() , chain_type="stuff", chain_type_kwargs={"prompt": PROMPT},return_source_documents=True) 
 
 # Ask a question
 response = qa_chain.invoke({ "query": query})
 
-
-print(response)
+print("Answer:", response["result"])
+print("Sources:")
+for doc in response["source_documents"]:
+    print(doc.metadata.get("source", "Unknown"), "-", doc.page_content[:100])
